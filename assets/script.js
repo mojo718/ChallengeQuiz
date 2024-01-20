@@ -3,6 +3,8 @@
 // creating global Vars with Arrays for questions, choices and answers
 // functions:
 // function start quiz with a timer
+
+
 // function show the questions using a Carousel (thanks Bobby for help with this!)
 // function to check the answers
 // function to update the timer
