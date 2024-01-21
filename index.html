@@ -13,9 +13,9 @@
     <!-- some resources i used: -->
     <!-- https://www.w3schools.com/tags/tag_span.asp -->
 
-    <div class="quiz-carousel">
+    <div id="quiz-carousel">
         <!-- Welcome section -->
-        <div class="Welcome-Start">
+        <div id="Welcome-Start">
             <h1>Coding Quiz Challenge</h1>
             <p>Answer the following code-related questions within the time limit</p>
             <p>Incorrect answers will remove 10 seconds from timer</p>
@@ -23,17 +23,20 @@
             <!--need to make and event listener and Start button function-->
         </div>
         <!-- questions and choices section -->
-        <div class="question"></div>
-        <div class="choices"></div>
+        <div id="question"></div>
+        <div id="choices"></div>
         <!-- timer -->
-        <div class="timer">Time Left: <span class="time">60</span>seconds</div>
+        <div id="timer">Time Left: <span id="time">60</span>seconds</div>
         <!-- Section to enter Initials -->
         <!-- https://www.w3schools.com/tags/tag_label.asp -->
-        <div class="initials">
-            <label for="initials">Enter your initials: </label>
+        
+        <div id="initials">
+           <label for="initials">Enter Initials: </label>
+           <input type="text" id="initialsInput" maxlength="3" placeholder="example: 'ABC'">
             <button id="recordScore">Record Score</button>
             <!--need to make event listener and record Score function for this button-->
         </div>
+
         <button id="displayScores">Display Score</button> <!--need to make eventlister and displayScores Function-->
     </div>
 
