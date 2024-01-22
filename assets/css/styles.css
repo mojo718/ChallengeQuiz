@@ -1,0 +1,19 @@
+/* Add to center carousel text */
+
+#quiz-carousel {
+    text-align: center;
+    margin: 50px auto;
+    width: 60%;
+}
+
+/* added display:none to IDs below to hide them by default */
+#question,
+#choices,
+#timer,
+#result,
+#initials,
+#restart,
+#displayScores
+ {
+    display: none;
+}

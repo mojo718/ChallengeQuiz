@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./assets/styles.css">
+    <link rel="stylesheet" href="./assets/css/styles.css">
     <title>JS Quiz</title>
 </head>
 
@@ -19,9 +19,11 @@
             <h1>Coding Quiz Challenge</h1>
             <p>Answer the following code-related questions within the time limit</p>
             <p>Incorrect answers will remove 10 seconds from timer</p>
-            <button id="startButton">Start Quiz</button>
+            <button type="button" id="startButton">Start Quiz</button>
             <!--need to make and event listener and Start button function-->
         </div>
+       
+       
         <!-- questions and choices section -->
         <div id="question"></div>
         <div id="choices"></div>
@@ -29,18 +31,23 @@
         <div id="timer">Time Left: <span id="time">60</span>seconds</div>
         <!-- Section to enter Initials -->
         <!-- https://www.w3schools.com/tags/tag_label.asp -->
-        
+
         <div id="initials">
-           <label for="initials">Enter Initials: </label>
-           <input type="text" id="initialsInput" maxlength="3" placeholder="example: 'ABC'">
+            <label for="initials">Enter initials: </label>
+            <input type="text" id="initialsInput" maxlength="3" placeholder="example: 'ABC'">
             <button id="recordScore">Record Score</button>
-            <!--need to make event listener and record Score function for this button-->
         </div>
 
-        <button id="displayScores">Display Score</button> <!--need to make eventlister and displayScores Function-->
+        <!--need to make event listener and record Score function for this button-->
+
+        <button id="displayScores">Display Score</button> 
+        
+        <!--need to make eventlister and displayScores Function-->
     </div>
 
-    <script> src = "./assets/script.js" </script>
+    <script src="./assets/js/script.js"></script>
+
+    
 
 
 </body>

@@ -5,6 +5,8 @@ var currentQuestion = 0
 var score = 0;
 var timer;
 var timeRemaining = 60;
+var quizStarted = false //added to keep track if quiz started
+
 // questions var Array
 var questions = [
     {
@@ -23,28 +25,41 @@ var questions = [
         correctAnswer: "A."
     }
 ];
-// functions:
-// function start quiz with a timer w\event listerner on Start Button
+
+
+// Added an event listener to start button that starts quiz if clicked.
 // https://www.w3schools.com/howto/howto_js_countdown.asp
-var startButton = document.getElementById("startButton");
-startButton.addEventListener("click", startQuiz)
+
+// function buttonClick() {console.log("button clicked"); }
+
+var startButtonEL = document.getElementById("startButton");
+startButtonEL.addEventListener("click", startQuiz);
+// startButtonEL.addEventListener("click", buttonClick);
 
 function startQuiz() {
-    document.getElementById("Welcome-Start").style.display = "none";
-    showQuestion();
-    timer = setInterval(updateTimer, 1000);
+    
+    if (!quizStarted) {
+        document.getElementById("Welcome-Start").style.display = "none"
+        quizStarted = true;
+        timer = setInterval(updateTimer, 1000);
+        showQuestion();
+
+    }
 }
+
 // function show the questions using a Carousel (thank u Bobby, for help with this!- reversed engineered code he demonstrated)
 // other resources used https://www.w3schools.com/jsref/prop_html_innerhtml.asp
 // https://www.w3schools.com/jsref/met_document_createelement.asp
+
 function showQuestion() {
-    var questionContainer = document.getElementById("question");
-    var choicesContainer = document.getElementById("choices");
 
-    questionContainer.textContent = questions[currentQuestion].question
+    var questionEl = document.getElementById("question");
+    var choicesEl = document.getElementById("choices");
 
-    choicesContainer.innerHTML = "";
-    for (var i = 0; i < questions[currentQuestion].choices.length; i++) {
+    questionEl.textContent = questions[currentQuestion].question
+
+    choicesEl.innerHTML = "";
+    for (var i = 0; i <= questions[currentQuestion].choices.length; i++) {
         var choice = document.createElement("div");
         choice.textContent = questions[currentQuestion].choices[i];
 
@@ -52,15 +67,15 @@ function showQuestion() {
             checkAnswer(event);
         });
 
-        choicesContainer.appendChild(choice);
+        choicesEl.appendChild(choice);
     }
-    document.getElementById("timer").style.display = "block"
-    document.getElementById("question").style.display = "block"
-    document.getElementById("choices").style.display = "block"
+    document.getElementById("timer").style.display = "block";
+    document.getElementById("question").style.display = "block";
+    document.getElementById("choices").style.display = "block";
 
 }
 
-// function to check the answers
+// function to check the answers after click
 function checkAnswer(event) {
     var selectedChoice = event.target.textContent;
     if (selectedChoice.charAt(0).toLowerCase() === questions[currentQuestion].correct) {
@@ -82,36 +97,45 @@ if (currentQuestion < questions.length) {
 
 // function to update the timer
 function updateTimer() {
-document.getElementById("time").textContent = timeRemaining;
-if (timeRemaining === 0) {
-    endQuiz();
-} else {
-    timeRemaining--;
-}
+    document.getElementById("time").textContent = timeRemaining;
+    if (timeRemaining === 0) {
+        endQuiz();
+    } else {
+        timeRemaining--;
+    }
 }
 
 // function to end quiz and display score
 // used style.display to hide\show elements
 function endQuiz() {
-    document.getElementById("timer").style.display ="none"
-    document.getElementById("question").style.display ="none"
-    document.getElementById("choices").style.display ="none"
+    document.getElementById("timer").style.display = "none";
+    document.getElementById("question").style.display = "none";
+    document.getElementById("choices").style.display = "none";
     document.getElementById("result").textContent = "The Quiz is Over.  Your Score is: " + score;
 
-    document.getElementById("initials").style.display ="block"
-    document.getElementById("restart").style.display ="block"
-    document.getElementById("display-scores").style.display ="block"
+    document.getElementById("initials").style.display = "block";
+    document.getElementById("restart").style.display = "block";
+    document.getElementById("displayScores").style.display = "block";
 }
 // function to recored the score and intitials (had to use JSON parse and stringify)
 // https://www.w3schools.com/js/js_json_stringify.asp and https://www.w3schools.com/js/js_json_parse.asp
+
+
 function recordScore() {
     var intitials = document.getElementById("intitialsInput").value;
-    var highScores = JSON.parse(localStorage.getItem("highScores")); //need to check this
-    highScores.push({intitials: intitials, score: score});
+    var highScores = JSON.parse(localStorage.getItem("highScores")) || []; //need to check this
+    highScores.push({ intitials: intitials, score: score });
     localStorage.setItem("highScores", JSON.stringify(highScores));
-    alert ("Score has been saved.");
+    alert("Score has been saved.");
 }
 
 
 // function to display score in a different Window
+function displayScores() {
+    window.Location.href = "scores.html";
+}
+
+
+
+startQuiz();
 
