@@ -22,5 +22,12 @@ function clearScores() {
     displayScores()
 }
 
+function returnToStart() {
+    window.location.href = "index.html"
+}
+
 var clearScoreEl = document.getElementById("clearScore");
 clearScoreEl.addEventListener("click", clearScores)
+
+var returnToStartEL =document.getElementById("returnToStart");
+returnToStartEL.addEventListener("click", returnToStart)
