@@ -8,12 +8,18 @@
 
 /* added display:none to IDs below to hide them by default */
 #question,
-#choices,
+
 #timer,
 #result,
 #initials,
 #restart,
 #displayScores
  {
+    display: none;
+}
+
+#choices {
+    background-color: aqua;
+    margin: auto;
     display: none;
 }
