@@ -1,4 +1,7 @@
 /* Add to center carousel text */
+body {
+    background-color: rgb(194, 187, 177);
+}
 
 #quiz-carousel {
     text-align: center;
@@ -11,15 +14,25 @@
 
 #timer,
 #result,
-#initials,
-#restart,
-#displayScores
- {
+#initials {
     display: none;
 }
 
 #choices {
-    background-color: aqua;
+    background-color: beige;
     margin: auto;
     display: none;
+}
+
+#choices div:hover {
+    background-color: burlywood;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+#displayScores,
+#restart {
+    display: none;
+    margin: auto;
+    padding: 10px;
 }
